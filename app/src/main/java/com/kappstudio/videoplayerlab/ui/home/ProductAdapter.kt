@@ -9,15 +9,18 @@ import com.kappstudio.videoplayerlab.data.Product
 import com.kappstudio.videoplayerlab.databinding.ItemProductBinding
 import com.kappstudio.videoplayerlab.util.setImage
 
-class ProductAdapter() :
+class ProductAdapter(private val viewModel: HomeViewModel) :
     ListAdapter<Product, ProductAdapter.ProductViewHolder>(DiffCallback) {
 
     inner class ProductViewHolder(private val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: Product, viewModel: HomeViewModel) {
             binding.tvName.text = product.name
             setImage(binding.ivCover, product.cover)
+            binding.itemProduct.setOnClickListener {
+                viewModel.navToDetail(product)
+            }
         }
     }
 
@@ -40,6 +43,6 @@ class ProductAdapter() :
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), viewModel)
     }
 }

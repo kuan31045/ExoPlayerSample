@@ -2,8 +2,10 @@
     <string name="app_name">Video Player Lab</string>
 
     <string name="my_list">我的清單</string>
+    <string name="watch_now">立即觀看</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="episode">集數</string>
 </resources>

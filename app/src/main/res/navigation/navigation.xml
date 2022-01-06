@@ -11,4 +11,17 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.kappstudio.videoplayerlab.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="product"
+            app:argType="com.kappstudio.videoplayerlab.data.Product" />
+    </fragment>
+
+    <action
+        android:id="@+id/navToDetailFragment"
+        app:destination="@id/detailFragment" />
 </navigation>

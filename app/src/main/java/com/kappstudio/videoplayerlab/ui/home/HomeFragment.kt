@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.kappstudio.videoplayerlab.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -18,11 +19,18 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val adapter = ProductAdapter()
+        val adapter = ProductAdapter(viewModel)
         binding.rvMyList.adapter = adapter
 
         viewModel.myList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        viewModel.navToDetail.observe(viewLifecycleOwner) {
+            it?.let {
+                findNavController().navigate(HomeFragmentDirections.navToDetailFragment(it))
+                viewModel.onNavToDetail()
+            }
         }
 
         return binding.root
