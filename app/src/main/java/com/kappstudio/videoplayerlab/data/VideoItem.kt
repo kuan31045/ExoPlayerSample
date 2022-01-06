@@ -9,8 +9,8 @@ import kotlinx.parcelize.Parcelize
 data class VideoItem(
     @PrimaryKey val id: String,
     val productId:String,
-    val title: String="",
-    val cover: String="",
+    val title: String,
+    val cover: String,
     val video: String,
     val desc: String="",
     @ColumnInfo(name = "last_watched_seconds")

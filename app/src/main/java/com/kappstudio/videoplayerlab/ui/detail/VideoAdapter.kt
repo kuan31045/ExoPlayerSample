@@ -15,12 +15,12 @@ class VideoAdapter(private val viewModel: DetailViewModel) :
     inner class VideoViewHolder(private val binding: ItemVideoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(videoItem: VideoItem, viewModel: DetailViewModel) {
+        fun bind(videoItem: VideoItem, viewModel: DetailViewModel, position: Int) {
             binding.tvTitle.text = videoItem.title
             binding.tvDesc.text = videoItem.desc
             setImage(binding.ivCover, videoItem.cover)
             binding.ivPlayerVideo.setOnClickListener {
-                //viewModel.navToPlayer(position)
+                viewModel.navToPlayer(position)
             }
         }
     }
@@ -44,6 +44,6 @@ class VideoAdapter(private val viewModel: DetailViewModel) :
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        holder.bind(getItem(position), viewModel)
+        holder.bind(getItem(position), viewModel, position)
     }
 }

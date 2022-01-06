@@ -15,13 +15,32 @@
         android:id="@+id/detailFragment"
         android:name="com.kappstudio.videoplayerlab.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="product"
             app:argType="com.kappstudio.videoplayerlab.data.Product" />
     </fragment>
 
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.kappstudio.videoplayerlab.ui.player.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player">
+        <argument
+            android:name="product"
+            app:argType="com.kappstudio.videoplayerlab.data.Product" />
+        <argument
+            android:name="episode"
+            app:argType="integer" />
+
+    </fragment>
+
     <action
         android:id="@+id/navToDetailFragment"
         app:destination="@id/detailFragment" />
+
+    <action
+        android:id="@+id/navToPlayerFragment"
+        app:destination="@id/playerFragment" />
+
 </navigation>

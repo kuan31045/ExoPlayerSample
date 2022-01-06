@@ -81,7 +81,9 @@ object SampleData {
             videoList = listOf(
                 VideoItem(
                     id = "v7",
+                    title="倒數一小時",
                     productId = "p3",
+                    cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/hour.PNG?alt=media&token=1501350a-5400-4627-b34f-4b9e6332f3a9",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/mp4/frame-counter-one-hour.mp4",
                 )
             )
@@ -96,7 +98,9 @@ object SampleData {
             videoList = listOf(
                 VideoItem(
                     id = "v8",
+                    title="大兔子邦克",
                     productId = "p4",
+                    cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/bunny.PNG?alt=media&token=9d43f34d-96e2-4abf-a08e-17a21469134e",
                     video = "https://storage.googleapis.com/downloads.webmproject.org/av1/exoplayer/bbb-av1-480p.mp4",
                 )
             )

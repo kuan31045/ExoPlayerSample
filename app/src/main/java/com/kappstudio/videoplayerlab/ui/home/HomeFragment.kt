@@ -8,6 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kappstudio.videoplayerlab.databinding.FragmentHomeBinding
+import android.content.pm.ActivityInfo
+
+import android.app.Activity
+
+
+
 
 class HomeFragment : Fragment() {
 
@@ -17,6 +23,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val adapter = ProductAdapter(viewModel)
