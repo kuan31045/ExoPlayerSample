@@ -48,7 +48,7 @@ object SampleData {
         Product(
             id = "p2",
             name = "可愛貓貓",
-            cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/dog.PNG?alt=media&token=5c46f1ad-79fa-4d50-8f5d-022feb48d624",
+            cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/cat.PNG?alt=media&token=871e0873-0fca-4f3d-b9b9-8f4916ca07b1",
             desc = "\" IMDb史上最高評價影集，勇奪金球最佳迷你影集兩項大獎。謊言的代價是什麼？寫實還原車諾比核災震撼神作。 \" - 編輯推薦\n" +
                     "1986年蘇聯一座核能電廠發生爆炸，廠內員工與消防隊員奮不顧身努力控制災情。",
             type = "series",
@@ -88,7 +88,7 @@ object SampleData {
         ),
         Product(
             id = "p4",
-            name = "倒數一小時",
+            name = "大兔子邦克",
             cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/bunny.PNG?alt=media&token=9d43f34d-96e2-4abf-a08e-17a21469134e",
             desc = "\" 有神快拜！昆丁導演轟動全球的黑色喜劇經典，暴力、碎嘴、時序重組樣樣來，創新敘事手法改寫電影規則。 \" - 編輯推薦\n" +
                     "鬼才編導昆丁塔倫提諾走紅全球的不敗神片！以大量對話佐以黑色幽默，甫推出即轟動影壇，贏得坎城金棕櫚大獎、奧斯卡最佳原著劇本，約翰屈伏塔、山繆傑克森、布魯斯威利、烏瑪舒曼共創無數經典橋段。一對殺人不眨眼但熱愛閒聊的殺手、冷酷的黑幫老大與他神祕性感的嬌妻、一個在名聲與金錢間掙扎的過氣拳擊手，以及一對搶匪情侶檔；這群人的離奇遭遇構成3段妙趣橫生、巧妙串連的荒謬故事...",
