@@ -6,6 +6,7 @@ import android.view.*
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -52,9 +53,11 @@ class PlayerFragment : Fragment() {
         return binding.root
     }
 
-    private fun setSubTitle(subTitle: String) {
-        playerView.findViewById<TextView>(R.id.exo_subtitle).text = subTitle
+    private fun setSubTitle() {
+        playerView.findViewById<TextView>(R.id.exo_subtitle).text =
+            viewModel.product.value!!.videoList[viewModel.currentEpisode.value!!].title
     }
+
 
     private fun initPlayer() {
 
@@ -67,16 +70,21 @@ class PlayerFragment : Fragment() {
         // Bind the player to the view.
         playerView.player = mPlayer
 
-        // Set the media source to be played.
-        mPlayer?.addMediaSources(viewModel.buildMediaSource())
+        mPlayer?.apply {
+            // Set the media source to be played.
+            this.addMediaSources(viewModel.buildMediaSource())
+            this.seekTo(
+                viewModel.currentEpisode.value ?: 0,
+                viewModel.playbackPosition.value ?: 0L
+            )
+            //Setting exoplayer when it is ready.
+            this.playWhenReady = true
 
-        //Setting exoplayer when it is ready.
-        mPlayer?.playWhenReady = true
+            this.addListener(playbackStateListener())
 
-        mPlayer?.addListener(playbackStateListener())
-
-        // Prepare the player.
-        mPlayer?.prepare()
+            // Prepare the player.
+            this.prepare()
+        }
 
         //Custom control view
         playerView.findViewById<TextView>(R.id.title).text = viewModel.product.value?.name
@@ -86,9 +94,22 @@ class PlayerFragment : Fragment() {
         if (viewModel.product.value?.isSeries == false) {
             activity?.findViewById<LinearLayout>(appR.id.layout_prev_next)?.visibility =
                 View.INVISIBLE
-            //  setSubTitle(viewModel.product
-        }
 
+        } else {
+            setSubTitle()
+
+        }
+    }
+
+    //Release the player
+    private fun releasePlayer() {
+        mPlayer?.apply {
+            //Sava play back info before release.
+            viewModel.setPlaybackPosition(this.currentPosition)
+            viewModel.setCurrentEpisode(this.currentMediaItemIndex)
+
+            this.release()
+        }
     }
 
     override fun onStart() {
@@ -103,16 +124,31 @@ class PlayerFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        mPlayer?.release()
+        releasePlayer()
     }
 
     //Show  progressBar when loading
     private fun playbackStateListener() = object : Player.Listener {
+        override fun onPositionDiscontinuity(
+            oldPosition: Player.PositionInfo,
+            newPosition: Player.PositionInfo,
+            reason: Int
+        ) {
+            super.onPositionDiscontinuity(oldPosition, newPosition, reason)
+            viewModel.setCurrentEpisode( mPlayer?.currentMediaItemIndex?:0)
+            setSubTitle()
+
+        }
+
         override fun onPlaybackStateChanged(playbackState: Int) {
             binding.progressBar.visibility = when (playbackState) {
                 Player.STATE_BUFFERING -> View.VISIBLE
-                 else -> View.GONE
+                else -> {
+                    playerView.hideController()
+                    View.GONE
+                }
             }
         }
+
     }
 }

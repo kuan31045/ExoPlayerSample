@@ -9,13 +9,27 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.kappstudio.videoplayerlab.data.Product
-import com.kappstudio.videoplayerlab.data.VideoItem
 
 class PlayerViewModel(currentProduct: Product, episode: Int) : ViewModel() {
 
     private val _product = MutableLiveData<Product>(currentProduct)
     val product: LiveData<Product>
         get() = _product
+
+    private val _currentEpisode = MutableLiveData<Int>(episode)
+    val currentEpisode: LiveData<Int>
+        get() = _currentEpisode
+
+    private val _playbackPosition = MutableLiveData<Long>(0L)
+    val playbackPosition: LiveData<Long>
+        get() = _playbackPosition
+
+    fun setCurrentEpisode(episode: Int) {
+        _currentEpisode.value = episode
+    }
+    fun setPlaybackPosition(position: Long) {
+        _playbackPosition.value = position
+    }
 
     //Creating mediaSource
     fun buildMediaSource( ): MutableList<MediaSource> {
