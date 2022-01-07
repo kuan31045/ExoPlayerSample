@@ -1,4 +1,7 @@
 # VideoPlayerLab
+• Using EXOPlayer to stream videos.
+
+• Customing player control view.
  
 ## Home Page
 ![271249867_472066074634285_2730303593608078251_n](https://user-images.githubusercontent.com/51369777/148491855-4899aef5-ee62-4b18-b63a-40cac02f6ba8.jpg)
