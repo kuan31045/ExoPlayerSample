@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.kappstudio.videoplayerlab.VMFactory
+import com.kappstudio.videoplayerlab.factory.VMFactory
 import com.kappstudio.videoplayerlab.databinding.FragmentDetailBinding
-import com.kappstudio.videoplayerlab.ui.home.HomeFragmentDirections
 import com.kappstudio.videoplayerlab.util.setImage
 
 class DetailFragment : Fragment() {

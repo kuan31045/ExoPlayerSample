@@ -1,4 +1,4 @@
-package com.kappstudio.videoplayerlab
+package com.kappstudio.videoplayerlab.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

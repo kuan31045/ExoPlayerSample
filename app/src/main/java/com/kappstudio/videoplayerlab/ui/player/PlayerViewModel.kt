@@ -11,21 +11,21 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.kappstudio.videoplayerlab.data.Product
 import com.kappstudio.videoplayerlab.data.VideoItem
 
-class PlayerViewModel(currentProduct: Product) : ViewModel() {
+class PlayerViewModel(currentProduct: Product, episode: Int) : ViewModel() {
 
     private val _product = MutableLiveData<Product>(currentProduct)
     val product: LiveData<Product>
         get() = _product
 
     //Creating mediaSource
-    fun buildMediaSource(urlList: List<VideoItem>): MutableList<MediaSource> {
+    fun buildMediaSource( ): MutableList<MediaSource> {
         val mediaList:MutableList<MediaSource> = mutableListOf()
 
         // Create a data source factory.
         val dataSourceFactory: DataSource.Factory = DefaultHttpDataSource.Factory()
 
         // Create a progressive media source pointing to a stream uri.
-        urlList.forEach {
+        product.value?.videoList?.forEach {
             mediaList.add(
                 ProgressiveMediaSource.Factory(dataSourceFactory)
                     .createMediaSource(MediaItem.fromUri(it.video)) )

@@ -14,7 +14,7 @@ object SampleData {
                 VideoItem(
                     id = "v1",
                     productId = "p1",
-                    title = "E1 可愛狗狗",
+                    title = "S1E1 可愛狗狗",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/dog.PNG?alt=media&token=5c46f1ad-79fa-4d50-8f5d-022feb48d624",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/mp4/android-screens-10s.mp4",
                     desc = "丹妮莉絲抵達臨冬城，瓊恩雪諾獲得一些大消息。"
@@ -22,7 +22,7 @@ object SampleData {
                 VideoItem(
                     id = "v2",
                     productId = "p1",
-                    title = "E2 可愛狗狗",
+                    title = "S1E2 可愛狗狗",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/dog.PNG?alt=media&token=5c46f1ad-79fa-4d50-8f5d-022feb48d624",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/mp4/android-screens-25s.mp4",
                     desc = "詹姆在心存懷疑的聽眾面前，為自己的情況辯解。"
@@ -30,7 +30,7 @@ object SampleData {
                 VideoItem(
                     id = "v3",
                     productId = "p1",
-                    title = "E3 可愛狗狗",
+                    title = "S1E3 可愛狗狗",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/dog.PNG?alt=media&token=5c46f1ad-79fa-4d50-8f5d-022feb48d624",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/gen-3/screens/dash-vod-single-segment/video-avc-baseline-480.mp4",
                     desc = "艾莉亞想證明自己身為戰士的價值。"
@@ -38,7 +38,7 @@ object SampleData {
                 VideoItem(
                     id = "v4",
                     productId = "p1",
-                    title = "E4 可愛狗狗",
+                    title = "S1E4 可愛狗狗",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/dog.PNG?alt=media&token=5c46f1ad-79fa-4d50-8f5d-022feb48d624",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/gen-3/screens/dash-vod-single-segment/video-137.mp4",
                     desc = "瓊恩和丹妮莉絲在付出慘痛代價贏得勝利後揮軍南下，此時提利昂尋求可以拯救無數生命的折衷辦法。"
@@ -56,7 +56,7 @@ object SampleData {
                 VideoItem(
                     id = "v5",
                     productId = "p2",
-                    title = "E1 可愛貓貓",
+                    title = "S1E1 可愛貓貓",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/cat.PNG?alt=media&token=871e0873-0fca-4f3d-b9b9-8f4916ca07b1",
                     video = "https://html5demos.com/assets/dizzy.mp4",
                     desc = "1986年蘇聯一座核能電廠發生爆炸，廠內員工與消防隊員奮不顧身努力控制災情。"
@@ -64,7 +64,7 @@ object SampleData {
                 VideoItem(
                     id = "v6",
                     productId = "p2",
-                    title = "E2 可愛貓貓",
+                    title = "S1E2 可愛貓貓",
                     cover = "https://firebasestorage.googleapis.com/v0/b/publisher-77e03.appspot.com/o/cat.PNG?alt=media&token=871e0873-0fca-4f3d-b9b9-8f4916ca07b1",
                     video = "https://storage.googleapis.com/exoplayer-test-media-1/mp4/dizzy-with-tx3g.mp4",
                     desc = "車諾比核電廠爆炸後，數以百萬計的無辜生命陷入危險。核子物理學家烏拉娜庫米約克努力與勒加索夫聯繫，對他提出可能發生二次爆炸的警告，到時將危及整個歐亞大陸。"
