@@ -45,7 +45,6 @@ class PlayerViewModel(currentProduct: Product, episode: Int) : ViewModel() {
                     .createMediaSource(MediaItem.fromUri(it.video)) )
         }
 
-
         return mediaList
     }
 }

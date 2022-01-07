@@ -1,6 +1,5 @@
 package com.kappstudio.videoplayerlab.ui.player
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
@@ -15,6 +14,7 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.kappstudio.videoplayerlab.factory.VMFactory
 import com.kappstudio.videoplayerlab.VideoApp.Companion.application
 import com.kappstudio.videoplayerlab.databinding.FragmentPlayerBinding
+import com.kappstudio.videoplayerlab.util.isInternetConnected
 import com.kappstudio.videoplayerlab.R as appR
 
 class PlayerFragment : Fragment() {
@@ -37,7 +37,7 @@ class PlayerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
 
         playerView = binding.playerView
@@ -53,11 +53,12 @@ class PlayerFragment : Fragment() {
         return binding.root
     }
 
-    private fun setSubTitle() {
-        playerView.findViewById<TextView>(R.id.exo_subtitle).text =
-            viewModel.product.value!!.videoList[viewModel.currentEpisode.value!!].title
+    private fun setSubtitle() {
+        if (viewModel.product.value?.isSeries != false) {
+            playerView.findViewById<TextView>(R.id.exo_subtitle).text =
+                viewModel.product.value!!.videoList[viewModel.currentEpisode.value!!].title
+        }
     }
-
 
     private fun initPlayer() {
 
@@ -88,17 +89,16 @@ class PlayerFragment : Fragment() {
 
         //Custom control view
         playerView.findViewById<TextView>(R.id.title).text = viewModel.product.value?.name
+
         activity?.findViewById<ImageButton>(appR.id.btn_close)?.setOnClickListener {
             findNavController().popBackStack()
         }
+
         if (viewModel.product.value?.isSeries == false) {
             activity?.findViewById<LinearLayout>(appR.id.layout_prev_next)?.visibility =
                 View.INVISIBLE
-
-        } else {
-            setSubTitle()
-
         }
+        setSubtitle()
     }
 
     //Release the player
@@ -127,28 +127,41 @@ class PlayerFragment : Fragment() {
         releasePlayer()
     }
 
-    //Show  progressBar when loading
     private fun playbackStateListener() = object : Player.Listener {
+
+        //Set subtitle when media change.
         override fun onPositionDiscontinuity(
             oldPosition: Player.PositionInfo,
             newPosition: Player.PositionInfo,
             reason: Int
         ) {
             super.onPositionDiscontinuity(oldPosition, newPosition, reason)
-            viewModel.setCurrentEpisode( mPlayer?.currentMediaItemIndex?:0)
-            setSubTitle()
-
+            viewModel.setCurrentEpisode(mPlayer?.currentMediaItemIndex ?: 0)
+            setSubtitle()
         }
 
+        //Show  progressBar when loading
         override fun onPlaybackStateChanged(playbackState: Int) {
             binding.progressBar.visibility = when (playbackState) {
                 Player.STATE_BUFFERING -> View.VISIBLE
-                else -> {
-                    playerView.hideController()
-                    View.GONE
-                }
+                else -> View.GONE
             }
         }
 
+        //Error when playing.
+        override fun onPlayerError(error: PlaybackException) {
+            super.onPlayerError(error)
+
+            //Internet connected error.
+            if (!isInternetConnected()) {
+                Toast.makeText(
+                    application,
+                    application.getString( appR.string.network_error),
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(application, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }

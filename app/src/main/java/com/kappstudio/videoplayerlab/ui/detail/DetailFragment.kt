@@ -1,6 +1,5 @@
 package com.kappstudio.videoplayerlab.ui.detail
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,9 +25,7 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
+        
         val binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         val adapter = VideoAdapter(viewModel)
